@@ -24,7 +24,21 @@ if (!user) {
   socket.emit("new", user);
 }
 
-//enviar mensaje
+// Obtener los mensajes almacenados en el localStorage
+const storedMessages = JSON.parse(localStorage.getItem("messages")) || [];
+
+// Mostrar los mensajes almacenados en la página
+const divLogs = document.getElementById("logs");
+let messages = "";
+
+storedMessages.forEach((msn) => {
+  messages =
+    `<p><i class="nickname">👤 ${msn.user}:</i> ${msn.message}</p>` + messages;
+});
+
+divLogs.innerHTML = messages;
+
+// Enviar mensaje
 chatbox.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     const message = chatbox.value.trim();
@@ -52,4 +66,7 @@ socket.on("logs", (data) => {
   });
 
   divLogs.innerHTML = messages;
+
+  // Almacenar los mensajes en el localStorage
+  localStorage.setItem("messages", JSON.stringify(data));
 });

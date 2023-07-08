@@ -23,7 +23,7 @@ app.get("/health", (req, res) => {
 });
 app.use("/", router);
 
-const messages = [];
+let messages = [];
 io.on("connection", (socket) => {
   socket.on("new", (user) => console.log(`${user} se acaba de conectar`));
 
