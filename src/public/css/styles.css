@@ -1,0 +1,60 @@
+body {
+  background-color: #1f1722;
+  font-family: "Belanosima", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f9f9f9;
+}
+
+.bruju {
+  margin: 8px 8px 0px 8px;
+  color: #ce87ec;
+}
+
+.dialogo {
+  display: flex;
+  justify-content: start;
+  color: #f9f9f9;
+  width: 80vw;
+  padding: 20px;
+}
+
+#username {
+  color: white;
+  margin-right: 10px;
+  width: 30%;
+}
+
+#chatbox {
+  color: #1f1722;
+  border: 2px solid rgb(167, 167, 167);
+  border-radius: 3px;
+  width: 70%;
+  padding: 3px;
+  outline: none;
+}
+
+#chatbox:focus {
+  border: 2px solid #ce87ec;
+}
+
+#logs {
+  margin-top: 20px;
+  background-color: #9c59b6a2;
+  color: #ce87ec;
+  border: 2px solid rgba(167, 167, 167, 0.795);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.nickname {
+  color: #f9f9f9;
+  margin-right: 10px;
+}

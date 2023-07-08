@@ -1,25 +1,26 @@
-// const name = input("Escribir nombre:");
 const socket = io();
 const chatbox = document.getElementById("chatbox");
 let user = sessionStorage.getItem("user") || "";
 
 if (!user) {
   Swal.fire({
-    title: "Auth",
+    title: "Registro",
     input: "text",
-    text: "Set username",
+    text: "Ingresá tu UserName",
     inputValidator: (value) => {
       return !value.trim() && "Please. write a username";
     },
     allowOutsideClick: false,
   }).then((result) => {
     user = result.value;
-    document.getElementById("username").innerHTML = user;
+    document.getElementById("username").innerHTML =
+      "🔮 Bienvenid@ " + user.toLocaleUpperCase() + "!.  Ya puedes chatear! :";
     sessionStorage.setItem("user", user);
     socket.emit("new", user);
   });
 } else {
-  document.getElementById("username").innerHTML = user;
+  document.getElementById("username").innerHTML =
+    "🔮 Bienvenid@ " + user.toLocaleUpperCase() + "!.  Ya puedes chatear! :";
   socket.emit("new", user);
 }
 
@@ -45,7 +46,9 @@ socket.on("logs", (data) => {
   let messages = "";
 
   data.forEach((msn) => {
-    messages = `<p><i>${msn.user}</i>: ${msn.message}</p>` + messages;
+    messages =
+      `<p><i class="nickname">👤 ${msn.user}:</i> ${msn.message}</p>` +
+      messages;
   });
 
   divLogs.innerHTML = messages;
